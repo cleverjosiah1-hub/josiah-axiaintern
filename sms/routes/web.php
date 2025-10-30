@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['role:SuperAdmin'])->group(function(){
+    Route::get('/admin/dashboard',[SuperAdminController::class, 'index'])->name('admin.dashboard');
+});
+
+Route::middleware(['role:Teacher'])->group(function(){
+    Route::get('/teacher/dashboard',[TeacherController::class, 'index'])->name('teacher.dashboard');
+});
