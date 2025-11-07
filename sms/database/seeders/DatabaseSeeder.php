@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         }
 
          $superAdmin = User::firstOrCreate([
-            'email' => 'cleverjosiah1@gmail.com',
+            'email' => 'superadmin@gmail.com',
         ], [
             'name' => 'Super Admin',
             'password' => bcrypt('password'),
@@ -30,12 +30,20 @@ class DatabaseSeeder extends Seeder
         $superAdmin->assignRole('SuperAdmin');
 
         $teacher = User::firstOrCreate([
-            'email' => 'cleverjosiah1@gmail.com',
+            'email' => 'teacher@gmail.com',
         ], [
             'name' => 'Teacher Josiah',
             'password' => bcrypt('password'),
         ]);
         $teacher->assignRole('Teacher');
+
+        $student = User::firstOrCreate([
+            'email' => 'student@example.com'
+        ], [
+            'name' => 'Student Mary',
+            'password' => bcrypt('password'),
+        ]);
+        $student->assignRole('Student');
 
     }
 }
