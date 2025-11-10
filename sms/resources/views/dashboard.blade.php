@@ -39,6 +39,14 @@
             <a class="navbar-brand" href="/">
                 🏫 SMS
             </a>
+            @auth
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button class="bg-danger px-3 py-1 rounded">
+                        Logout</button>
+                </form>
+            @endauth
+        </nav>
             <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
